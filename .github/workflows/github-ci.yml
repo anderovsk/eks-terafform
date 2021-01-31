@@ -15,8 +15,19 @@ jobs:
           curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
           sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
           sudo apt-get update && sudo apt-get install terraform
+  validate:
+    runs-on: ubuntu-latest
+    on:
+      workflow_run:
+        workflows: ["setup"]
+        branches: [main]
+        types: 
+          - completed
+          - requested
+    steps:
+      - uses: actions/checkout@v2
       - name: validate_terraform
-        if: steps.test_secret_repository.conclusion == 'success
+        if: setup.steps.test_secret_repository.conclusion == 'success
         run: |
           terraform --version
           sed -i s,#access_key#,$SECRET_REPOSITORY_TESTE,g main.tf
