@@ -12,5 +12,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: test_secret_repository
         run: echo $SECRET_REPOSITORY_TESTE
-      - name: test_secret
-       run: echo $SECRET_TESTE
+      # - name: test_secret
+      #  run: echo $SECRET_TESTE
