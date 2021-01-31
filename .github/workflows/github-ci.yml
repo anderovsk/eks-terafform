@@ -23,5 +23,5 @@ jobs:
       - name: validate_terraform
         run: |
           terraform --version
-          sed -i s,#access_key#,${{ env.SECRET_REPOSITORY_TESTE }},g main.tf
+          sed -i s,#access_key#,${{ secret.SECRET_TESTE }},g main.tf
           cat main.tf
