@@ -11,4 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: test
-        run: env
+        run: echo $SECRET_REPOSITORY_TESTE
+        run: echo $SECRET_TESTE
