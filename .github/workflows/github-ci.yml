@@ -20,6 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: validate_terraform
+        if: setup.steps.test_secret_repository.conclusion == 'success
         run: |
           terraform --version
           sed -i s,#access_key#,$SECRET_REPOSITORY_TESTE,g main.tf
