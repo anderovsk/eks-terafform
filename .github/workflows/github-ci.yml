@@ -31,12 +31,5 @@ jobs:
           sed -i s,#node_group_name#,${{ secrets.NODE_GROUP_NAME }},g ./tfvars/prod.tfvars
           sed -i s,#subnet_01#,${{ secrets.SUBNET_01 }},g ./tfvars/prod.tfvars
           sed -i s,#subnet_02#,${{ secrets.SUBNET_02 }},g ./tfvars/prod.tfvars
-  plan:
-    runs-on: ubuntu-latest
-    needs: [setup, validate]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Plan
-        run: |
           terraform init
           terraform plan -var-file=./tfvars/prod.tfvars
