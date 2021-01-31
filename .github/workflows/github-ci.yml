@@ -17,13 +17,7 @@ jobs:
           sudo apt-get update && sudo apt-get install terraform
   validate:
     runs-on: ubuntu-latest
-    on:
-      workflow_run:
-        workflows: ["setup"]
-        branches: [main]
-        types: 
-          - completed
-          - requested
+    needs: setup
     steps:
       - uses: actions/checkout@v2
       - name: validate_terraform
