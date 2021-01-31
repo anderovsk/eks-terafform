@@ -23,13 +23,11 @@ jobs:
       - name: validate_terraform
         run: |
           terraform --version
-          sed -i s,#access_key#,${{ secrets.ACCESS_KEY }},g main.tf
-          sed -i s,#secret_key#,${{ secrets.SECRET_KEY }},g main.tf
           sed -i s,#region#,${{ secrets.REGION }},g main.tf
           sed -i s,#region#,${{ secrets.REGION }},g ./tfvars/prod.tfvars
           sed -i s,#cluster_name#,${{ secrets.cluster_name }},g ./tfvars/prod.tfvars
           sed -i s,#node_group_name#,${{ secrets.NODE_GROUP_NAME }},g ./tfvars/prod.tfvars
           sed -i s,#subnet_01#,${{ secrets.SUBNET_01 }},g ./tfvars/prod.tfvars
           sed -i s,#subnet_02#,${{ secrets.SUBNET_02 }},g ./tfvars/prod.tfvars
-          terraform init
-          terraform plan -var-file=./tfvars/prod.tfvars
+          cat main.tf
+          cat prod.tfvars
