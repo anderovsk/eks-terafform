@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test
+      - name: test_secret_repository
         run: echo $SECRET_REPOSITORY_TESTE
-        run: echo $SECRET_TESTE
+      - name: test_secret
+       run: echo $SECRET_TESTE
