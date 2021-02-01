@@ -32,4 +32,4 @@ jobs:
           sed -i s,#subnet_01#,${{ secrets.SUBNET_01 }},g ./tfvars/prod.tfvars
           sed -i s,#subnet_02#,${{ secrets.SUBNET_02 }},g ./tfvars/prod.tfvars
           terraform init
-          terraform apply -var-file=./tfvars/prod.tfvars --auto-approve
+          terraform destroy -var-file=./tfvars/prod.tfvars --auto-approve
